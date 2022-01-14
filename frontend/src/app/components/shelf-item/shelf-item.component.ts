@@ -18,13 +18,6 @@ export class ShelfItemComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    // this.googlebooksService.getshelfItem(this.bookItem)
-    //   .subscribe(data => {
-    //     this.book = data;
-    //     console.log(data)
-    //   }, err => {
-    //     console.log(err)
-    //   })
   }
 
   setItemId(id: any):void {
