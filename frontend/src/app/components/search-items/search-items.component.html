@@ -1,0 +1,24 @@
+<div>
+    <div>
+        <form class="d-flex w-50 mx-auto align-items-center">
+            <i class="bi bi-search mx-3 text-muted"></i>
+            <input class="form-control me-2" [formControl]="searchInput" (ngModelChange)="searchVolume()" type="search" placeholder="Search" aria-label="Search">
+        </form>
+    </div>
+    <p class="lead text-center my-3">Results:</p>
+    <div *ngIf="!bookResultsLength" class="text-center mt-3 d-flex align-items-center justify-content-center">
+        <div class="spinner-border spinner-border-sm text-primary" role="status">
+            <span class="visually-hidden">Loading...</span>
+        </div>
+        <strong class="mx-2">loading...</strong>  
+    </div>
+     
+
+    <div class="container my-3">
+        <div  class="row">
+            <div *ngFor="let item of bookResults" class="col-6 col-md-4 col-lg-3">
+                <app-shelf-item [bookItem]="item"></app-shelf-item>
+            </div>
+        </div>
+    </div>
+</div>
