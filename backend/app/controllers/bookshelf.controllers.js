@@ -62,7 +62,7 @@ exports.findOne = (req, res) => {
 // update a tutorial with id
 exports.update = (req, res) => {
     // validate request
-    if(!req.body.bookId || !req.body.shelf) {
+    if(!req.params.bookId) {
         res.status(400).send({
             message: "content cannot be empty"
         });
@@ -71,8 +71,8 @@ exports.update = (req, res) => {
     // find note and update it with the request body
     Bookshelf.findOneAndUpdate({ bookId: req.params.id } , {
         // bookId: req.body.bookId,
-        shelf: req.body.shelf,
-        notes: req.body.notes || ''
+        shelf: req.body.shelf ? req.body.shelf : '',
+        notes: req.body.notes ? req.body.notes : ''
     }, {returnNewDocument: true})
         .then(tutorial => {
             if(!tutorial) {

@@ -12,17 +12,8 @@
     </p>
     <hr>
     <div class="row mt-5" *ngIf="showList">
-        <div class="col-6 col-md-4 col-lg-3 text-center">
-            <app-shelf-item></app-shelf-item>
-        </div>
-        <div class="col-6 col-md-4 col-lg-3 text-center">
-            <app-shelf-item></app-shelf-item>
-        </div>
-        <div class="col-6 col-md-4 col-lg-3 text-center">
-            <app-shelf-item></app-shelf-item>
-        </div>
-        <div class="col-6 col-md-4 col-lg-3 text-center">
-            <app-shelf-item></app-shelf-item>
+        <div *ngFor="let item of bookArray" class="col-6 col-md-4 col-lg-3 text-center">
+            <app-shelf-item [bookItem]="item"></app-shelf-item>
         </div>
     </div>
 </div>
