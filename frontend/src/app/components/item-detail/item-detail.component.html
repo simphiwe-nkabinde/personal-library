@@ -1,25 +1,42 @@
 <div class="container">
     <div class="row">
-        <div class="col-3">
-            <img src="https://books.google.co.za/books/content?id=TYsV8nF-D0AC&printsec=frontcover&img=1&zoom=1&edge=curl&imgtk=AFLRE736h_1N-M35-6g99vkG_VBP6gfu1khTGtfeUfFfKlvazxqFKAP1x4DyPfPPcwfjh6RXrZqh-qeYoyTYQR4zcKdtTsMhL4cUvtAgDPWyzckLXnSHzK5Ey_Bavb6zFWE52V8inUdn" class="shadow-sm w-100" alt="">
+        <div class="col-6 col-md-3">
+            <img src="{{bookItem.volumeInfo.imageLinks.thumbnail}}" class="shadow-sm w-100" alt="">
         </div>
-        <div class="col d-flex flex-column justify-content-evenly">
+        <div class="col d-flex flex-column justify-content-evenl">
             <div>
-                Title:
+                <strong>Title:</strong>
+                <p>
+                    {{bookItem.volumeInfo.title}} <br>
+                    <small>{{bookItem.volumeInfo.subtitle}}</small>
+                </p>
             </div>
             <div>
-                Author:
+                <strong>Author:</strong>
+                <span class="mx-1" *ngFor="let author of bookItem.volumeInfo.authors">{{author}} | </span>
             </div>
             <div>
-                Published:
+                <strong>Description:</strong>
+                <p>{{bookItem.volumeInfo.description}}</p>
             </div>
             <div>
-                Status: Completed
+                <strong>Published:</strong>
+                <p>{{bookItem.volumeInfo.publishedDate}}</p>
             </div>
         </div>
+        <a class="" target="_blank" routerLink="{{bookItem.volumeInfo.previewLink}}">Full Preview</a>
     </div>
-
-    <div class="m-2">
+    <hr>
+    <div class="row">
+        <div class="text-primary border rounded p-1 col-sm-5 me-1 w-auto">Shelf: Completed</div>
+        <select class="form-select form-select-sm col-sm-5 w-auto" aria-label="Default select example">
+            <option selected>Add to Shelf</option>
+            <option value="wishlist">Wishlist</option>
+            <option value="reading">Reading</option>
+            <option value="completed">Completd</option>
+        </select>
+    </div>
+    <div class="mt-3">
         My Notes:
         <p class="bg-light rounded p-3">
             Lorem ipsum dolor, sit amet consectetur adipisicing elit. Recusandae rem voluptatem in aspernatur velit numquam ea totam. Magnam, doloremque quas. Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda quibusdam doloribus distinctio quis velit, laborum dolor voluptate consectetur quaerat inventore impedit. Iste reiciendis nulla voluptatum cumque, corrupti ullam dignissimos vero.
