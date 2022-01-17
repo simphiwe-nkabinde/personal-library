@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { BookshelfService } from 'src/app/services/bookshelf.service';
 import { GooglebooksService } from 'src/app/services/googlebooks.service'
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-item-detail',
@@ -10,6 +11,7 @@ import { GooglebooksService } from 'src/app/services/googlebooks.service'
 })
 export class ItemDetailComponent implements OnInit {
 
+  @Input() prevRoute: string = ''
   bookItem: any;
   bookInfo: any;
   shelfInput = new FormControl('');
@@ -17,12 +19,17 @@ export class ItemDetailComponent implements OnInit {
 
   constructor(
     private googlebooksService: GooglebooksService,
-    private bookshelfService: BookshelfService
+    private bookshelfService: BookshelfService,
+    private location: Location
   ) { }
 
   ngOnInit(): void {
     this.getBookFromGoogle();
     this.getBookFromBookshelf();
+  }
+
+  locationBack(): void {
+    this.location.back();
   }
 
 

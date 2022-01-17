@@ -20,7 +20,7 @@ export class ShelfListComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.bookshelfService.getShelf('completed')
+    this.bookshelfService.getShelf(this.listTitle)
       .subscribe(data => {
         this.getBooks(data)
       }, err => {

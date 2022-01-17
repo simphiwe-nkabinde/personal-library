@@ -12,6 +12,7 @@ export class SearchItemsComponent implements OnInit {
   bookResults: object[] = []
   searchInput = new FormControl('');
   bookResultsLength: number = 1;
+  lastSearch: string = '';
 
   constructor(
     private googlebooksService: GooglebooksService

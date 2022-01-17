@@ -1,7 +1,6 @@
 const Bookshelf = require('../models/bookshelf.model');
 
 exports.create = (req, res) => {
-    console.log(req.body);
     // Validate request
     if(!req.body.bookId || !req.body.shelf) {
         res.status(400).send({ message: "content cannot be empty" });
@@ -42,7 +41,6 @@ exports.findAll = (req, res) => {
 // find a single book with an id
 exports.findOne = (req, res) => {
     let id = req.params.id
-    console.log("finOne() method: ",id)
     Bookshelf.findOne({bookId : id})
         .then(book => {
             if(!book) {
