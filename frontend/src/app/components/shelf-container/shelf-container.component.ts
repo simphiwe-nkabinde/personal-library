@@ -7,6 +7,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ShelfContainerComponent implements OnInit {
 
+  listTitle = {
+    completed: 'completed',
+    reading: 'reading',
+    wishlist: 'wishlist'
+  }
+
   constructor() { }
 
   ngOnInit(): void {

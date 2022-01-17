@@ -122,8 +122,9 @@ exports.deleteAll = (req, res) => {
         });
 }
 
-//finf all books with the same shelf name
+//find all book id's with the same shelf name
 exports.findShelf = (req, res) => {
+    let idList = [];
     let shelfName = req.params.shelf
     Bookshelf.find({shelf: shelfName})
         .then(bookList => {
@@ -133,7 +134,11 @@ exports.findShelf = (req, res) => {
                 })
                 return;
             }
-            res.send(bookList);
+            //add book id's to array
+            bookList.forEach(book => {
+                idList.push(book.bookId)
+            });
+            res.send(idList);
         }).catch(err => {
             res.status(500).send({
                 message: err.message || `some error occured while retrieving the ${shelfName} shelf`

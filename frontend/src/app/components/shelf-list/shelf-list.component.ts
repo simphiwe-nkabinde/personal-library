@@ -12,6 +12,7 @@ export class ShelfListComponent implements OnInit {
   showList:boolean = true;
 
   @Input() listTitle = '';
+  bookList: object[] = []
   
   constructor(
     private googlebooksService: GooglebooksService,
@@ -19,12 +20,26 @@ export class ShelfListComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.bookshelfService.getShelf('completed')
+      .subscribe(data => {
+        console.log(data);
+        this.getBooks(data)
+      }, err => {
+        console.log(err)
+      })
   }
   showListToggle(): void {
     this.showList = !this.showList;
   }
 
-
-
+  getBooks(idArr: object[]): void {
+    idArr.forEach(id => {
+      let book = this.googlebooksService.getshelfItem(id)
+        .subscribe(data => {
+          this.bookList.push(data);
+        });
+    })
+    console.log(this.bookList)
+  }
 
 }

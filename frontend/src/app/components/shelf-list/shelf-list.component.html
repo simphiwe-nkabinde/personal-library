@@ -1,5 +1,5 @@
 <div class="container my-5">
-    <p class="text-muted btn mb-0" (click)="showListToggle()">
+    <p class="text-muted btn mb-0 text-capitalize" (click)="showListToggle()">
         <span *ngIf="!showList">
           <i class="bi bi-chevron-right text-secondary"></i>  
         </span>
@@ -12,8 +12,8 @@
     </p>
     <hr>
     <div class="row mt-5" *ngIf="showList">
-        <div class="col-6 col-md-4 col-lg-3 text-center">
-            <app-shelf-item></app-shelf-item>
+        <div *ngFor="let item of bookList" class="col-6 col-md-4 col-lg-3 text-center">
+            <app-shelf-item [bookItem]='item'></app-shelf-item>
         </div>
     </div>
 </div>
