@@ -2,6 +2,7 @@ const Bookshelf = require('../models/bookshelf.model');
 
 exports.create = (req, res) => {
     // Validate request
+    console.log(req.body)
     if(!req.body.bookId || !req.body.shelf) {
         res.status(400).send({ message: "content cannot be empty" });
         return;

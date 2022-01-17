@@ -38,7 +38,6 @@ export class ShelfListComponent implements OnInit {
           this.bookList.push(data);
         });
     })
-    console.log(this.bookList)
   }
 
 }

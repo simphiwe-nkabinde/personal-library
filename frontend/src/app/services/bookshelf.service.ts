@@ -27,13 +27,17 @@ export class BookshelfService {
   getItem(): Observable<any> {
     return this.http.get(`${baseUrl}/book/${this.detailItemId}`);
   }
-  create(data: any): Observable<any> {
-    return this.http.post(`${baseUrl}`, data)
+  create(shelfName: any): Observable<any> {
+    let newItem = {
+      bookId: this.detailItemId,
+      shelf: shelfName
+    }
+    return this.http.post(`${baseUrl}`, newItem)
   }
   update(data: any): Observable<any> {
     return this.http.put(`${baseUrl}/${this.detailItemId}`, data)
   }
-  delete( ): Observable <any> {
+  delete(): Observable <any> {
     return this.http.delete(`${baseUrl}/${this.detailItemId}`)
   }
   deleteAll(): Observable<any> {

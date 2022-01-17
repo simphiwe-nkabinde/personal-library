@@ -14,7 +14,7 @@ export class ItemDetailComponent implements OnInit {
   @Input() prevRoute: string = ''
   bookItem: any;
   bookInfo: any;
-  shelfInput = new FormControl('');
+  shelfInput = new FormControl('completed');
   notesInput = new FormControl('')
 
   constructor(
@@ -92,6 +92,16 @@ export class ItemDetailComponent implements OnInit {
     this.bookshelfService.delete()
       .subscribe(data => {
         console.log(data)
+      }, err => {
+        console.log(err)
+      })
+  }
+
+  addItem(): void {
+    console.log("shelfInput: ", this.shelfInput.value)
+    this.bookshelfService.create(this.shelfInput.value)
+      .subscribe(data => {
+        console.log(data);
       }, err => {
         console.log(err)
       })
