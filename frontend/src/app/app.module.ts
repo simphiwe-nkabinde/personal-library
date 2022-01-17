@@ -11,6 +11,7 @@ import { ShelfListComponent } from './components/shelf-list/shelf-list.component
 import { ItemDetailComponent } from './components/item-detail/item-detail.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { SearchItemsComponent } from './components/search-items/search-items.component';
+import { LandingComponent } from './components/landing/landing.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { SearchItemsComponent } from './components/search-items/search-items.com
     ShelfListComponent,
     ItemDetailComponent,
     NavbarComponent,
-    SearchItemsComponent
+    SearchItemsComponent,
+    LandingComponent
   ],
   imports: [
     BrowserModule,

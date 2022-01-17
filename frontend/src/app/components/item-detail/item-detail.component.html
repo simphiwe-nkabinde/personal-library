@@ -1,6 +1,6 @@
 <div class="container">
     <div class="row">
-        <div class="col-6 col-md-3">
+        <div class="col-12 col-md-3">
             <img src="{{bookItem.volumeInfo.imageLinks.thumbnail}}" class="shadow-sm w-100" alt="">
         </div>
         <div class="col d-flex flex-column justify-content-evenl">
@@ -15,16 +15,19 @@
                 <strong>Author:</strong>
                 <span class="mx-1" *ngFor="let author of bookItem.volumeInfo.authors">{{author}} | </span>
             </div>
-            <div>
-                <strong>Description:</strong>
+
+            <strong>Description:</strong>
+            <div class="overflow-auto" style="height: 30%;">
                 <p>{{bookItem.volumeInfo.description}}</p>
             </div>
+
             <div>
                 <strong>Published:</strong>
                 <p>{{bookItem.volumeInfo.publishedDate}}</p>
             </div>
+            <a class="" target="_blank" routerLink="{{bookItem.volumeInfo.previewLink}}">Full Preview</a>
         </div>
-        <a class="" target="_blank" routerLink="{{bookItem.volumeInfo.previewLink}}">Full Preview</a>
+
     </div>
     <hr>
     <div class="row">
@@ -38,7 +41,8 @@
     </div>
     <div class="mt-3">
         My Notes:
-        <textarea [formControl]="notesInput" (ngOnChange)="updateNotes()" class="bg-light rounded p-3 w-100">
+        <textarea [formControl]="notesInput" (ngOnChange)="updateNotes()" style="height:200px;" class="bg-light text-secondary border-0 rounded p-3 w-100">
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quibusdam aperiam temporibus repellendus, consequuntur laborum nobis ratione omnis qui minima dolorum obcaecati, delectus dolor incidunt cumque ipsa inventore perspiciatis, sunt a corrupti eos! Quos ea aperiam nobis, facilis a dicta minima illum accusantium accusamus temporibus tempore. Suscipit veritatis non quae natus?
         </textarea>
     </div>
 </div>
