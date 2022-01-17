@@ -18,7 +18,7 @@ export class GooglebooksService {
     return this.http.get('https://www.googleapis.com/books/v1/volumes?q=' + searchString);
   }
 
-  setdetailItemId(idString: string):void {
+  setDetailItemId(idString: string):void {
     this.detailItemId = idString;
   }
 

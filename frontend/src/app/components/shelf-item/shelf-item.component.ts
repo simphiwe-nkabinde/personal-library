@@ -21,7 +21,7 @@ export class ShelfItemComponent implements OnInit {
   }
 
   setItemId(id: any):void {
-    this.googlebooksService.setdetailItemId(id)
+    this.googlebooksService.setDetailItemId(id)
     this.bookshelfService.setDetailItemId(id)
   }
 

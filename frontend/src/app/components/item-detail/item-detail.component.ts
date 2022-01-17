@@ -11,6 +11,7 @@ import { GooglebooksService } from 'src/app/services/googlebooks.service'
 export class ItemDetailComponent implements OnInit {
 
   bookItem: any;
+  bookInfo: any;
   shelfInput = new FormControl('');
   notesInput = new FormControl('')
 
@@ -20,10 +21,15 @@ export class ItemDetailComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.getBookFromGoogle();
+    this.getBookFromBookshelf();
+  }
+
+
+  getBookFromGoogle(): void {
     this.googlebooksService.getItem()
       .subscribe(
         data => {
-          console.log("DETAIL: ", data);
           this.bookItem = data;
         },
         err => {
@@ -31,17 +37,30 @@ export class ItemDetailComponent implements OnInit {
         }
       )
   }
+  getBookFromBookshelf(): void {
+    this.bookshelfService.getItem()
+      .subscribe(
+        data => {
+          this.bookInfo = data;
+        },
+        err => {
+          console.log(err);
+        }
+      )
+  }
+
+
   getfromBookshelf(): void {
-    this.bookshelfService.getOne()
+    this.bookshelfService.getItem()
       .subscribe(data => {
         console.log(data)
       }, err => {
         console.log(err);
       })
   }
-  updateShelf(): void {
+  updateShelf(newShelf: string): void {
     let data = {
-      shelf: this.shelfInput.value
+      shelf: newShelf
     }
     this.bookshelfService.update(data)
       .subscribe(data => {
@@ -55,6 +74,15 @@ export class ItemDetailComponent implements OnInit {
       notes: this.notesInput.value
     }
     this.bookshelfService.update(data)
+      .subscribe(data => {
+        console.log(data)
+      }, err => {
+        console.log(err)
+      })
+  }
+
+  deleteItem(): void {
+    this.bookshelfService.delete()
       .subscribe(data => {
         console.log(data)
       }, err => {

@@ -15,7 +15,6 @@
                 <strong>Author:</strong>
                 <span class="mx-1" *ngFor="let author of bookItem.volumeInfo.authors">{{author}} | </span>
             </div>
-
             <strong>Description:</strong>
             <div class="overflow-auto" style="height: 30%;">
                 <p>{{bookItem.volumeInfo.description}}</p>
@@ -31,18 +30,34 @@
     </div>
     <hr>
     <div class="row">
-        <div class="text-primary border rounded p-1 col-sm-5 me-1 w-auto">Shelf: Completed</div>
-        <select [formControl]="shelfInput" (ngOnChange)="updateShelf()" class="form-select form-select-sm col-sm-5 w-auto" aria-label="Default select example">
-            <option selected>Add to Shelf</option>
-            <option value="wishlist">Wishlist</option>
-            <option value="reading">Reading</option>
-            <option value="completed">Completd</option>
-        </select>
+        <div class="dropdown  col">
+            <button class="btn btn-secondary btn-success dropdown-toggle" type="button" id="dropdownShelf" data-bs-toggle="dropdown" aria-expanded="false">
+                <i class="bi bi-plus-lg"> Add to Shelf</i>
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownShelf">
+              <li><span class="dropdown-item" href="#">Action</span></li>
+              <li><span class="dropdown-item" href="#">Another action</span></li>
+              <li><span class="dropdown-item" href="#">Something else here</span></li>
+            </ul>
+        </div>
+        <div class="dropdown  col" *ngIf="bookInfo.bookId">
+            <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownShelf" data-bs-toggle="dropdown" aria-expanded="false">
+                <i class="bi bi-toggles"> Change Shelf</i>
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownShelf">
+              <li><span  class="dropdown-item"  (click)="updateShelf('completed')">Completed</span></li>
+              <li><span  class="dropdown-item"  (click)="updateShelf('reading')">Reading</span></li>
+              <li><span  class="dropdown-item"  (click)="updateShelf('wishlist')">Wsihlist</span></li>
+            </ul>
+        </div>
+        <div *ngIf="bookInfo.bookId" class="col-3 mx-1 btn btn-danger" (click)="deleteItem()">
+            <i class="bi bi-trash-fill"> Delete from Shelf</i>
+        </div>
     </div>
-    <div class="mt-3">
+    <div class="mt-3" *ngIf="bookInfo.bookId">
         My Notes:
         <textarea [formControl]="notesInput" (ngOnChange)="updateNotes()" style="height:200px;" class="bg-light text-secondary border-0 rounded p-3 w-100">
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quibusdam aperiam temporibus repellendus, consequuntur laborum nobis ratione omnis qui minima dolorum obcaecati, delectus dolor incidunt cumque ipsa inventore perspiciatis, sunt a corrupti eos! Quos ea aperiam nobis, facilis a dicta minima illum accusantium accusamus temporibus tempore. Suscipit veritatis non quae natus?
+            {{bookInfo.notes}}
         </textarea>
     </div>
 </div>

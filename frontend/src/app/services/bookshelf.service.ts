@@ -24,8 +24,8 @@ export class BookshelfService {
   getShelf(shelf: string): Observable<any> {
     return this.http.get(`${baseUrl}/${shelf}`)
   }
-  getOne(): Observable<any> {
-    return this.http.get(`${baseUrl}/${this.detailItemId}`);
+  getItem(): Observable<any> {
+    return this.http.get(`${baseUrl}/book/${this.detailItemId}`);
   }
   create(data: any): Observable<any> {
     return this.http.post(`${baseUrl}`, data)
@@ -33,8 +33,8 @@ export class BookshelfService {
   update(data: any): Observable<any> {
     return this.http.put(`${baseUrl}/${this.detailItemId}`, data)
   }
-  delete(id: any): Observable <any> {
-    return this.http.delete(`${baseUrl}/${id}`)
+  delete( ): Observable <any> {
+    return this.http.delete(`${baseUrl}/${this.detailItemId}`)
   }
   deleteAll(): Observable<any> {
     return this.http.delete(baseUrl);

@@ -41,15 +41,17 @@ exports.findAll = (req, res) => {
 
 // find a single book with an id
 exports.findOne = (req, res) => {
-    Bookshelf.findOne({bookId : req.params.id})
-        .then(tutorial => {
-            if(!tutorial) {
+    let id = req.params.id
+    console.log("finOne() method: ",id)
+    Bookshelf.findOne({bookId : id})
+        .then(book => {
+            if(!book) {
                 res.status(404).send({
                     messsage : "Bookshelf not found with id:" + req.params.id
                 });
                 return;
             }
-            res.send(tutorial);
+            res.send(book);
         }).catch(err => {
             res.status(500).send({
                 message: "error retrieving tutorial with id:" + req.params.id

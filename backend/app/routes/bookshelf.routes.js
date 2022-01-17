@@ -6,7 +6,7 @@ const bookshelfController = require('../controllers/bookshelf.controllers')
 router.get('/:shelf', bookshelfController.findShelf);
 
 // get book by id
-router.get('/:id', bookshelfController.findOne);
+router.get('/book/:id', bookshelfController.findOne);
 
 // add new Tutorial
 router.post('/', bookshelfController.create);

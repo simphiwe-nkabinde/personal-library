@@ -22,7 +22,6 @@ export class ShelfListComponent implements OnInit {
   ngOnInit(): void {
     this.bookshelfService.getShelf('completed')
       .subscribe(data => {
-        console.log(data);
         this.getBooks(data)
       }, err => {
         console.log(err)
