@@ -2,12 +2,10 @@ const express = require('express')
 const router = express.Router();
 const bookshelfController = require('../controllers/bookshelf.controllers')
 
-// get bookshelves
-router.get('/shelf/completed', bookshelfController.findShelfCompleted);
-router.get('/shelf/reading', bookshelfController.findShelfReading);
-router.get('/shelf/wishlist', bookshelfController.findShelfWishlist);
+// get shelf (completed | reading | wishlist)
+router.get('/:shelf', bookshelfController.findShelf);
 
-// get Tutorial by id
+// get book by id
 router.get('/:id', bookshelfController.findOne);
 
 // add new Tutorial
