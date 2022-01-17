@@ -21,17 +21,11 @@ export class BookshelfService {
     this.detailItemId = idString;
   }
 
-  getShelfCompleted(): Observable<any> {
-    return this.http.get(`${baseUrl}/shelf/completed`)
+  getShelf(shelf: string): Observable<any> {
+    return this.http.get(`${baseUrl}/${shelf}`)
   }
   getOne(): Observable<any> {
     return this.http.get(`${baseUrl}/${this.detailItemId}`);
-  }
-  getShelfReading(): Observable<any> {
-    return this.http.get(`${baseUrl}/shelf/reading`)
-  }
-  getShelfwishList(): Observable<any> {
-    return this.http.get(`${baseUrl}/shelf/wishlist`)
   }
   create(data: any): Observable<any> {
     return this.http.post(`${baseUrl}`, data)
