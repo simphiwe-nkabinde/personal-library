@@ -11,35 +11,43 @@ import { Location } from '@angular/common';
 export class SearchItemsComponent implements OnInit {
 
   bookResults: object[] = []
-  searchInput = new FormControl('');
+  // searchInput = new FormControl('');
   bookResultsLength: number = 1;
-  lastSearch: any;
+  searchInput?: FormControl;
 
   constructor(
     private googlebooksService: GooglebooksService,
     private location: Location
   ) { 
+    //search memory
     this.location.onUrlChange(url => {
-      this.searchInput.setValue(this.lastSearch);
-      this.searchVolume()
+      this.searchInput = new FormControl(sessionStorage.getItem("lastSearch"));
+      if (location.path() == '/search') {
+        //get lastSearch memory
+        this.searchInput.setValue(sessionStorage.getItem("lastSearch"))
+        
+        
+        this.searchVolume
+      }
+      
     })
   }
 
   ngOnInit(): void {
-    this.searchVolume()
+    this.searchInput = new FormControl(sessionStorage.getItem("lastSearch"))
   }
 
   searchVolume(): void {
-    this.lastSearch = this.searchInput.value;
-
+    this.searchInput
+    //search memory
     if(this.searchInput.value === '') {
       this.bookResultsLength = 1;
       return;
     }
+    sessionStorage.setItem("lastSearch", this.searchInput.value)
     this.bookResultsLength = 0;
     this.googlebooksService.getVolume(this.searchInput.value).subscribe(
       data => {
-        console.log(data);
         this.bookResults = data.items;
         this.bookResultsLength = data.items.length;
       },
