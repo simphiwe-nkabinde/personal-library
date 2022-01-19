@@ -13,7 +13,7 @@ export class SearchItemsComponent implements OnInit {
   bookResults: object[] = []
   // searchInput = new FormControl('');
   bookResultsLength: number = 1;
-  searchInput?: FormControl;
+  searchInput: FormControl = new FormControl
 
   constructor(
     private googlebooksService: GooglebooksService,
@@ -21,30 +21,24 @@ export class SearchItemsComponent implements OnInit {
   ) { 
     //search memory
     this.location.onUrlChange(url => {
-      this.searchInput = new FormControl(sessionStorage.getItem("lastSearch"));
       if (location.path() == '/search') {
-        //get lastSearch memory
-        this.searchInput.setValue(sessionStorage.getItem("lastSearch"))
-        
-        
         this.searchVolume
       }
-      
     })
   }
 
   ngOnInit(): void {
-    this.searchInput = new FormControl(sessionStorage.getItem("lastSearch"))
+    this.searchInput = new FormControl(sessionStorage.getItem("lastSearch"))  //restore from search memory
+    this.searchVolume()
   }
 
   searchVolume(): void {
-    this.searchInput
-    //search memory
-    if(this.searchInput.value === '') {
+    if(!this.searchInput.value) {
       this.bookResultsLength = 1;
       return;
     }
-    sessionStorage.setItem("lastSearch", this.searchInput.value)
+    sessionStorage.setItem("lastSearch", this.searchInput.value)  //update search memory
+
     this.bookResultsLength = 0;
     this.googlebooksService.getVolume(this.searchInput.value).subscribe(
       data => {
