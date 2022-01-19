@@ -27,7 +27,7 @@
                 <strong>Published:</strong>
                 <p>{{bookItem.volumeInfo.publishedDate}}</p>
             </div>
-            <a class="" target="_blank" routerLink="{{bookItem.volumeInfo.previewLink}}">Full Preview</a>
+            <a class="" target="_blank" href="{{bookItem.volumeInfo.previewLink}}">Full Preview</a>
         </div>
 
     </div>
@@ -75,5 +75,6 @@
         <textarea [formControl]="notesInput" (ngOnChange)="updateNotes()" style="height:200px;" class="bg-light text-secondary border-0 rounded p-3 w-100">
             {{bookInfo.notes}}
         </textarea>
+        <button *ngIf="bookInfo" class="btn btn-success">Save Notes</button>
     </div>
 </div>
