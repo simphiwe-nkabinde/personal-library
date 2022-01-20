@@ -71,9 +71,9 @@ export class ItemDetailComponent implements OnInit {
         console.log(err);
       })
   }
-  updateShelf(newShelf: string): void {
+  updateShelf(): void {
     let data = {
-      shelf: newShelf
+      shelf: this.shelfInput.value
     }
     this.bookshelfService.update(data)
       .subscribe(data => {

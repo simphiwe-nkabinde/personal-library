@@ -33,9 +33,9 @@
     </div>
     <hr>
     <div class="row">
-        <div class="dropdown col" *ngIf="!bookInfo">
+        <div class="col" *ngIf="!bookInfo">
             <div class="row">
-                <button class="btn btn-success rounded-0 col-5 col-md-3" type="button" (click)="addItem()">
+                <button class="btn alert-success rounded-0 col-5 col-md-2" type="button" (click)="addItem()">
                     <i class="bi bi-plus-lg"> Add to Shelf</i>
                 </button>
                 <select [formControl]="shelfInput" class="form-select rounded-0 col-6 col-sm-4" style="width: inherit;">
@@ -46,18 +46,21 @@
             </div>
 
         </div>
-        <div class="dropdown  col" *ngIf="bookInfo">
-            <button class="btn btn-primary dropdown-toggle" type="button">
-                <i class="bi bi-toggles"> Change Shelf</i>
-            </button>
-            <ul class="dropdown-menu" aria-labelledby="dropdownShelf">
-              <li><span  class="dropdown-item"  (click)="updateShelf('completed')">Completed</span></li>
-              <li><span  class="dropdown-item"  (click)="updateShelf('reading')">Reading</span></li>
-              <li><span  class="dropdown-item"  (click)="updateShelf('wishlist')">Wsihlist</span></li>
-            </ul>
+        <div class="col" *ngIf="bookInfo">
+            <div class="row">
+                <button class="btn alert-primary rounded-0 col-5 col-md-4" (click)="updateShelf()" type="button">
+                    <i class="bi bi-toggles"> Change Shelf</i>
+                </button>
+                <select [formControl]="shelfInput" class="form-select rounded-0 col-6 col-sm-4" style="width: inherit;">
+                    <option value="completed">Completed</option>
+                    <option value="reading">Reading</option>
+                    <option value="wishlist">Wishlist</option>
+                </select>  
+            </div>
+
         </div>
-        <div *ngIf="bookInfo" class="col-3 mx-1 btn btn-danger" (click)="deleteItem()">
-            <i class="bi bi-trash-fill"> Delete from Shelf</i>
+        <div *ngIf="bookInfo" class="col-3 mx-1 btn alert-danger rounded-0" (click)="deleteItem()">
+            <i class="bi bi-trash-fill"> Delete</i>
         </div>
     </div>
     <div class="mt-3" *ngIf="bookInfo">
