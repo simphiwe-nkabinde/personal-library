@@ -12,7 +12,7 @@ export class SearchItemsComponent implements OnInit {
 
   bookResults: object[] = []
   // searchInput = new FormControl('');
-  bookResultsLength: number = 1;
+  loading: boolean = false;
   searchInput: FormControl = new FormControl
 
   constructor(
@@ -33,22 +33,21 @@ export class SearchItemsComponent implements OnInit {
   }
 
   searchVolume(): void {
-    if(!this.searchInput.value) {
-      this.bookResultsLength = 1;
-      return;
+    if(this.searchInput.value) {
+      this.loading = true;
+      sessionStorage.setItem("lastSearch", this.searchInput.value)  //update search memory
+      this.googlebooksService.getVolume(this.searchInput.value)
+        .subscribe(
+          data => {
+            this.bookResults = data.items;
+            if(data.items.length) {
+              this.loading = false;
+            }
+          },err => {console.log(err);}
+        )
+    } else {
+      this.loading = false;
+      this.bookResults = [];
     }
-    sessionStorage.setItem("lastSearch", this.searchInput.value)  //update search memory
-
-    this.bookResultsLength = 0;
-    this.googlebooksService.getVolume(this.searchInput.value).subscribe(
-      data => {
-        this.bookResults = data.items;
-        this.bookResultsLength = data.items.length;
-      },
-      err => {
-        console.log(err);
-      }
-    )
   }
-
 }
