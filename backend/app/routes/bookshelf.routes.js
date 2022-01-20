@@ -8,16 +8,16 @@ router.get('/:shelf', bookshelfController.findShelf);
 // get book by id
 router.get('/book/:id', bookshelfController.findOne);
 
-// add new Tutorial
+// add new book
 router.post('/', bookshelfController.create);
 
-// update Tutorial by id
+// update book by id
 router.put('/:id', bookshelfController.update);
 
-// remove Tutorial by id
+// remove book by id
 router.delete('/:id', bookshelfController.delete);
 
-// remove all Tutorials
+// remove all books
 router.delete('/', bookshelfController.deleteAll);
 
 module.exports = router;
@@ -28,13 +28,13 @@ module.exports = router;
 
 Methods |   Urls	                |   Actions
 -------------------------------------------------------------
-GET	    |   api/bookshelf	        |   get all Tutorials
-GET	    |   api/bookshelf/:id	    |   get Tutorial by id
-POST    |   api/bookshelf	        |   add new Tutorial
-PUT	    |   api/bookshelf/:id	    |   update Tutorial by id
-DELETE	|   api/bookshelf/:id	    |   remove Tutorial by id
-DELETE	|   api/bookshelf	        |   remove all Tutorials
-GET	    |   api/bookshelf?title=[kw]|   find all Tutorials which title contains 'kw'
+GET	    |   api/bookshelf	        |   get all books
+GET	    |   api/bookshelf/:id	    |   get book by id
+POST    |   api/bookshelf	        |   add new book
+PUT	    |   api/bookshelf/:id	    |   update book by id
+DELETE	|   api/bookshelf/:id	    |   remove book by id
+DELETE	|   api/bookshelf	        |   remove all books
+GET	    |   api/bookshelf?title=[kw]|   find all books which title contains 'kw'
 
 
 */

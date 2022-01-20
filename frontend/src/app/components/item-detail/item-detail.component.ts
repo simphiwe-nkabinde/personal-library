@@ -15,7 +15,8 @@ export class ItemDetailComponent implements OnInit {
   bookItem: any;
   bookInfo: any;
   shelfInput = new FormControl('completed');
-  notesInput = new FormControl('')
+  notesInput = new FormControl;
+  editNotes: boolean = false;
 
   constructor(
     private googlebooksService: GooglebooksService,
@@ -26,12 +27,17 @@ export class ItemDetailComponent implements OnInit {
   ngOnInit(): void {
     this.getBookFromGoogle();
     this.getBookFromBookshelf();
+    this.notesInput = new FormControl(this.bookInfo.notes)
   }
 
   locationBack(): void {
     this.location.back();
   }
 
+  editNotesToggle():void {
+    this.editNotes = !this.editNotes;
+    this.notesInput = new FormControl(this.bookInfo.notes)
+  }
 
   getBookFromGoogle(): void {
     this.googlebooksService.getItem()
@@ -85,7 +91,10 @@ export class ItemDetailComponent implements OnInit {
         console.log(data)
       }, err => {
         console.log(err)
-      })
+      }
+    )
+
+    this.editNotesToggle();
   }
 
   deleteItem(): void {

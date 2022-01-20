@@ -1,3 +1,4 @@
+const { status } = require('express/lib/response');
 const Bookshelf = require('../models/bookshelf.model');
 
 exports.create = (req, res) => {
@@ -59,33 +60,38 @@ exports.findOne = (req, res) => {
 
 }
 
-// update a tutorial with id
+// update a book with id
 exports.update = (req, res) => {
     // validate request
-    if(!req.body.shelf) {
-        res.status(400).send({
+    if(!req.body) {
+        return res.status(400).send({
             message: "content cannot be empty"
         });
     }
 
-    // find book and update it with the request body
-    Bookshelf.findOneAndUpdate({ bookId: req.params.id } , {
-        shelf: req.body.shelf,
-        notes: req.body.notes ? req.body.notes : ''
-    }, {returnNewDocument: true})
-        .then(book => {
-            if(!book) {
-                res.status(404).send({
-                    message: "book not found with id: " + req.params.id
-                })
-                return;
-            }
-            res.send(book)
-        }).catch(err => {
-            res.status(500).send({
-                message: "some error occured while updating the book with id: " + req.params.id
+    Bookshelf.findOne({ bookId: req.params.id }, (err, book) => {
+        if(err) {
+            return res.status(500).send({
+                message: "error updating book"
+            });
+        }
+        if(!book) {
+            return res,status(404).send({
+                message: "book not found"
             })
+        }
+        //update with new values
+        book.shelf = req.body.shelf ? req.body.shelf : book.shelf;
+        book.notes = req.body.notes ? req.body.notes : book.notes;
+
+        book.save((err, user) => {
+            if(err) {
+                return res.status(500).send({
+                    message: err.message || "some error occured while updating the book"
+                })
+            }
         })
+    })
 }
 
 // delete a book with an id
