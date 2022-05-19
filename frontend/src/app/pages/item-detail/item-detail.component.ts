@@ -3,6 +3,7 @@ import { FormControl } from '@angular/forms';
 import { BookshelfService } from 'src/app/services/bookshelf.service';
 import { GooglebooksService } from 'src/app/services/googlebooks.service'
 import { Location } from '@angular/common';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-item-detail',
@@ -21,7 +22,8 @@ export class ItemDetailComponent implements OnInit {
   constructor(
     private googlebooksService: GooglebooksService,
     private bookshelfService: BookshelfService,
-    private location: Location
+    private location: Location,
+    private activatedRoute: ActivatedRoute
   ) { }
 
   ngOnInit(): void {
@@ -40,7 +42,7 @@ export class ItemDetailComponent implements OnInit {
   }
 
   getBookFromGoogle(): void {
-    this.googlebooksService.getItem()
+    this.googlebooksService.getshelfItem(this.activatedRoute.snapshot.params['id'])
       .subscribe(
         data => {
           this.bookItem = data;
@@ -51,7 +53,7 @@ export class ItemDetailComponent implements OnInit {
       )
   }
   getBookFromBookshelf(): void {
-    this.bookshelfService.getItem()
+    this.bookshelfService.getItem(this.activatedRoute.snapshot.params['id'])
       .subscribe(
         data => {
           this.bookInfo = data;
@@ -64,7 +66,7 @@ export class ItemDetailComponent implements OnInit {
 
 
   getfromBookshelf(): void {
-    this.bookshelfService.getItem()
+    this.bookshelfService.getItem(this.activatedRoute.snapshot.params['id'])
       .subscribe(data => {
         console.log(data)
       }, err => {

@@ -24,8 +24,8 @@ export class BookshelfService {
   getShelf(shelf: string): Observable<any> {
     return this.http.get(`${baseUrl}/${shelf}`)
   }
-  getItem(): Observable<any> {
-    return this.http.get(`${baseUrl}/book/${this.detailItemId}`);
+  getItem(id:string): Observable<any> {
+    return this.http.get(`${baseUrl}/book/${id}`);
   }
   create(shelfName: any): Observable<any> {
     let newItem = {

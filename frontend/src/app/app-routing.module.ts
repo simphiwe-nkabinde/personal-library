@@ -8,7 +8,7 @@ import { LandingComponent } from './pages/landing/landing.component';
 const routes: Routes = [
   // { path: '/', component: AppComponent},
   { path: 'myshelf', component: ShelfContainerComponent },
-  { path: 'detail', component: ItemDetailComponent},
+  { path: 'books/:id', component: ItemDetailComponent},
   { path: 'search', component: SearchItemsComponent },
   { path: '', component: LandingComponent}
 ];

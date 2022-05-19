@@ -1,5 +1,5 @@
-<div class="cursor-pointer text-center m-2" (click)="setItemId(bookItem.id)" routerLink="/detail">
-    <img src="{{bookItem.volumeInfo.imageLinks.thumbnail}}" class="shadow-sm img-fluid hover-shadow" alt="">
+<div class="cursor-pointer text-center m-2" routerLink="/books/{{bookItem.id}}">
+    <img src="{{bookItem.volumeInfo.imageLinks.thumbnail}}" class="shadow img-fluid hover-shadow" alt="">
     <p class="text-primary m-0">
         {{bookItem.volumeInfo.title}}
     </p>
