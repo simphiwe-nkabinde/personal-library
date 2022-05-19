@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ShelfContainerComponent } from './components/shelf-container/shelf-container.component';
-import { ItemDetailComponent } from './components/item-detail/item-detail.component';
-import { SearchItemsComponent } from './components/search-items/search-items.component';
-import { LandingComponent } from './components/landing/landing.component';
+import { ShelfContainerComponent } from './pages/shelf-container/shelf-container.component';
+import { ItemDetailComponent } from './pages/item-detail/item-detail.component';
+import { SearchItemsComponent } from './pages/search-items/search-items.component';
+import { LandingComponent } from './pages/landing/landing.component';
 
 const routes: Routes = [
   // { path: '/', component: AppComponent},

@@ -5,13 +5,13 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { ShelfContainerComponent } from './components/shelf-container/shelf-container.component';
+import { ShelfContainerComponent } from './pages/shelf-container/shelf-container.component';
 import { ShelfItemComponent } from './components/shelf-item/shelf-item.component';
 import { ShelfListComponent } from './components/shelf-list/shelf-list.component';
-import { ItemDetailComponent } from './components/item-detail/item-detail.component';
+import { ItemDetailComponent } from './pages/item-detail/item-detail.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
-import { SearchItemsComponent } from './components/search-items/search-items.component';
-import { LandingComponent } from './components/landing/landing.component';
+import { SearchItemsComponent } from './pages/search-items/search-items.component';
+import { LandingComponent } from './pages/landing/landing.component';
 
 @NgModule({
   declarations: [
