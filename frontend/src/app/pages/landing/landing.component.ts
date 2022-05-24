@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SlideAnimationsModule } from 'src/app/slide-animations/slide-animations.module';
 
 @Component({
   selector: 'app-landing',
@@ -7,9 +8,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LandingComponent implements OnInit {
 
-  constructor() { }
+  constructor(public slideAnimation: SlideAnimationsModule) { }
 
   ngOnInit(): void {
+    this.slideAnimation.includeAll();
   }
 
 }
