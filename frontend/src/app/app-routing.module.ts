@@ -4,11 +4,13 @@ import { ShelfComponent } from './pages/shelf/shelf.component';
 import { BookInfoComponent } from './pages/book-info/book-info.component';
 import { SearchComponent } from './pages/search/search.component';
 import { LandingComponent } from './pages/landing/landing.component';
+import { BookNotesComponent } from './pages/book-notes/book-notes.component';
 
 const routes: Routes = [
   // { path: '/', component: AppComponent},
   { path: 'myshelf', component: ShelfComponent },
   { path: 'books/:id', component: BookInfoComponent},
+  { path: 'notes/:id', component: BookNotesComponent },
   { path: 'search', component: SearchComponent },
   { path: '', component: LandingComponent}
 ];

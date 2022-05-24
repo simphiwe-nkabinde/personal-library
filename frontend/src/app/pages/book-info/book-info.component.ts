@@ -6,7 +6,7 @@ import { Location } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
-  selector: 'app-item-detail',
+  selector: 'app-book-info',
   templateUrl: './book-info.component.html',
   styleUrls: ['./book-info.component.scss']
 })
@@ -31,10 +31,6 @@ export class BookInfoComponent implements OnInit {
     this.getBookFromGoogle();
     this.getBookFromBookshelf();
     this.notesInput = new FormControl(this.bookInfo.notes)
-  }
-
-  locationBack(): void {
-    this.location.back();
   }
 
   editNotesToggle():void {

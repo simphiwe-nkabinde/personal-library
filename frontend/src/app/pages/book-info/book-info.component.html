@@ -1,5 +1,5 @@
 <div class="container mb-5">
-    <div (click)='locationBack()' class="my-4 text-decoration-none cursor-pointer text-primary">
+    <div routerLink="/search"class="my-4 text-decoration-none cursor-pointer text-primary">
         <i class="bi bi-chevron-left"> Back</i>
     </div>
     <div class="row">
@@ -36,5 +36,5 @@
 </div>
 <div class="bottom-tab-wrapper">
     <a routerLink="/books/{{bookItem.id}}" routerLinkActive="text-primary" class="tab">book Info</a>
-    <a class="tab">My Notes</a>
+    <a routerLink="/notes/{{bookItem.id}}" routerLinkActive="text-primary" class="tab">My Notes</a>
 </div>

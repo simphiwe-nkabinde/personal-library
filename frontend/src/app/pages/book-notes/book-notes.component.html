@@ -1,0 +1,24 @@
+<div class="container mb-5">
+    <div class="d-flex flex-wrap justify-content-evenly">
+
+        <div class="create-new">
+            <i class="bi bi-plus">add note</i>
+        </div>
+
+        <div *ngFor="let note of notes" class="note-card">
+            <div class="note-title text-left">
+                <h6>Title</h6> 
+                <p>12 Jun 2022</p>
+            </div>
+            <div class="note-inner text-start p-1 border">
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam, nemo.</p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium repudiandae accusamus voluptate commodi vero eligendi nihil obcaecati iste nam! Asperiores, molestias. Quae numquam ut odit repudiandae facere veniam, exercitationem adipisci quo officia perspiciatis sit totam assumenda natus expedita sed incidunt nisi libero quidem iusto non placeat nesciunt corrupti. Laboriosam, consectetur!</p>
+            </div>
+        </div>
+    </div>
+
+</div>
+<div class="bottom-tab-wrapper">
+    <a routerLink="/books/vHnZCwAAQBAJ" routerLinkActive="text-primary" class="tab">book Info</a>
+    <a routerLink="/notes/vHnZCwAAQBAJ" routerLinkActive="text-primary" class="tab">My Notes</a>
+</div>

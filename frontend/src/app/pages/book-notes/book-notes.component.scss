@@ -1,0 +1,37 @@
+@import '~bootstrap/scss/bootstrap.scss';
+
+.note-card {
+    @extend .border, .text-center, .m-2, .shadow-sm, .bg-light;
+    width: 8rem;
+    height: 12rem;
+
+    .note-title {
+        height: 2rem;
+        text-align: start;
+        padding: 5px;
+        h6 {
+            font-size: .7rem;
+            margin: 0;
+        }
+        p {
+            font-size: .5rem;
+            @extend .text-muted;
+        }
+    }
+
+    .note-inner {
+        @extend .bg-white;
+        font-size: .4rem;
+        width: 7.6rem;
+        height: 9.6rem;
+        margin: 2px auto;
+        vertical-align: middle;
+        overflow-y: hidden;
+    }
+}
+
+.create-new {
+    @extend .border, .text-center, .m-2, .shadow-sm, .bg-light, .text-muted, .d-flex, .justify-content-center, .align-items-center;
+    width: 8rem;
+    height: 12rem;
+}

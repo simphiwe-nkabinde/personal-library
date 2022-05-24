@@ -12,6 +12,7 @@ import { BookInfoComponent } from './pages/book-info/book-info.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { SearchComponent } from './pages/search/search.component';
 import { LandingComponent } from './pages/landing/landing.component';
+import { BookNotesComponent } from './pages/book-notes/book-notes.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { LandingComponent } from './pages/landing/landing.component';
     BookInfoComponent,
     NavbarComponent,
     SearchComponent,
-    LandingComponent
+    LandingComponent,
+    BookNotesComponent
   ],
   imports: [
     BrowserModule,
