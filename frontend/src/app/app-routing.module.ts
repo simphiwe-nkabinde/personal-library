@@ -1,15 +1,15 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ShelfContainerComponent } from './pages/shelf-container/shelf-container.component';
-import { ItemDetailComponent } from './pages/item-detail/item-detail.component';
-import { SearchItemsComponent } from './pages/search-items/search-items.component';
+import { ShelfComponent } from './pages/shelf/shelf.component';
+import { BookInfoComponent } from './pages/book-info/book-info.component';
+import { SearchComponent } from './pages/search/search.component';
 import { LandingComponent } from './pages/landing/landing.component';
 
 const routes: Routes = [
   // { path: '/', component: AppComponent},
-  { path: 'myshelf', component: ShelfContainerComponent },
-  { path: 'books/:id', component: ItemDetailComponent},
-  { path: 'search', component: SearchItemsComponent },
+  { path: 'myshelf', component: ShelfComponent },
+  { path: 'books/:id', component: BookInfoComponent},
+  { path: 'search', component: SearchComponent },
   { path: '', component: LandingComponent}
 ];
 

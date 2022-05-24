@@ -4,23 +4,26 @@
     </div>
     <div class="row">
         <div class="col-12 col-md-3">
-            <img src="{{bookItem.volumeInfo.imageLinks.thumbnail}}" class="shadow-sm w-100" alt="">
+            <img src="{{bookItem.volumeInfo.imageLinks.thumbnail}}" class="shadow-sm" alt="">
         </div>
         <div class="col d-flex flex-column justify-content-evenl">
             <div>
-                <strong>Title:</strong>
-                <p>
-                    {{bookItem.volumeInfo.title}} <br>
-                    <small>{{bookItem.volumeInfo.subtitle}}</small>
-                </p>
+                <strong>{{bookItem.volumeInfo.title}}</strong>
+                <p><small>{{bookItem.volumeInfo.subtitle}}</small></p>
             </div>
             <div>
                 <strong>Author:</strong>
                 <span class="mx-1" *ngFor="let author of bookItem.volumeInfo.authors">{{author}} | </span>
             </div>
-            <strong>Description:</strong>
-            <div class="overflow-auto" style="height: 30%;">
-                <p [innerHTML]="bookItem.volumeInfo.description"></p>
+            <div class="overflow-auto">
+                <div *ngIf="!seeMore">
+                    <p [innerHTML]="bookItem.volumeInfo.description.slice(0, 200)+'<span>...</span>'"></p>
+                    <span class="text-primary text-decoration-underline" (click)="seeMoreToggle(true)">see more</span>    
+                </div>
+                <div *ngIf="seeMore">
+                    <p [innerHTML]="bookItem.volumeInfo.description"></p>
+                    <span class="text-primary text-decoration-underline" (click)="seeMoreToggle(false)">see less</span>
+                </div>
             </div>
 
             <div>

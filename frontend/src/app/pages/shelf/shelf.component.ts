@@ -2,10 +2,10 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-shelf-container',
-  templateUrl: './shelf-container.component.html',
-  styleUrls: ['./shelf-container.component.scss']
+  templateUrl: './shelf.component.html',
+  styleUrls: ['./shelf.component.scss']
 })
-export class ShelfContainerComponent implements OnInit {
+export class ShelfComponent implements OnInit {
 
   listTitle = {
     completed: 'completed',

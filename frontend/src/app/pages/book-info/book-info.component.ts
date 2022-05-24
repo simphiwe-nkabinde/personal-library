@@ -7,10 +7,10 @@ import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-item-detail',
-  templateUrl: './item-detail.component.html',
-  styleUrls: ['./item-detail.component.scss']
+  templateUrl: './book-info.component.html',
+  styleUrls: ['./book-info.component.scss']
 })
-export class ItemDetailComponent implements OnInit {
+export class BookInfoComponent implements OnInit {
 
   @Input() prevRoute: string = ''
   bookItem: any;
@@ -18,6 +18,7 @@ export class ItemDetailComponent implements OnInit {
   shelfInput = new FormControl('completed');
   notesInput = new FormControl;
   editNotes: boolean = false;
+  seeMore: boolean = false;
 
   constructor(
     private googlebooksService: GooglebooksService,
@@ -116,6 +117,9 @@ export class ItemDetailComponent implements OnInit {
       }, err => {
         console.log(err)
       })
+  }
+  seeMoreToggle(showMore: boolean) {
+    this.seeMore = showMore
   }
 
 }

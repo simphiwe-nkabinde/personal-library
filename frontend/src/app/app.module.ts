@@ -5,23 +5,23 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { ShelfContainerComponent } from './pages/shelf-container/shelf-container.component';
+import { ShelfComponent } from './pages/shelf/shelf.component';
 import { ShelfItemComponent } from './components/shelf-item/shelf-item.component';
 import { ShelfListComponent } from './components/shelf-list/shelf-list.component';
-import { ItemDetailComponent } from './pages/item-detail/item-detail.component';
+import { BookInfoComponent } from './pages/book-info/book-info.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
-import { SearchItemsComponent } from './pages/search-items/search-items.component';
+import { SearchComponent } from './pages/search/search.component';
 import { LandingComponent } from './pages/landing/landing.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ShelfContainerComponent,
+    ShelfComponent,
     ShelfItemComponent,
     ShelfListComponent,
-    ItemDetailComponent,
+    BookInfoComponent,
     NavbarComponent,
-    SearchItemsComponent,
+    SearchComponent,
     LandingComponent
   ],
   imports: [
