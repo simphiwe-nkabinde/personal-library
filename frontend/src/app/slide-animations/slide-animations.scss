@@ -53,3 +53,18 @@
         transform: translateY(0px);
     }
 }
+
+.fadeIn {
+    visibility: hidden;
+    animation: fadeIn 1s forwards;
+}
+@keyframes fadeIn {
+    0% {
+        visibility: hidden;
+        opacity: 0.1;
+    } 
+    100% {
+        visibility: visible;
+        opacity: 1;
+    }   
+}

@@ -1,12 +1,12 @@
 <div>
     <div>
-        <form class="d-flex w-50 mx-auto align-items-center">
+        <form class="d-flex mx-auto align-items-center slide-right">
             <i class="bi bi-search mx-3 text-muted"></i>
             <input class="form-control me-2" [formControl]="searchInput" (ngModelChange)="searchVolume()" type="search" placeholder="Search" aria-label="Search">
         </form>
     </div>
     <p class="lead text-center my-3">Results:</p>
-    <div *ngIf="loading" class="text-center mt-3 d-flex align-items-center justify-content-center">
+    <div *ngIf="loading" class="text-center mt-3 d-flex align-items-center justify-content-center fadeIn">
         <div class="spinner-border spinner-border-sm text-primary" role="status">
             <span class="visually-hidden">Loading...</span>
         </div>

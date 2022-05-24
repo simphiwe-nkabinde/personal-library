@@ -3,10 +3,10 @@
         <i class="bi bi-chevron-left"> Back</i>
     </div>
     <div class="row">
-        <div class="col-12 col-md-3">
+        <div *ngIf="bookItem.volumeInfo.imageLinks.thumbnail" class="col-12 col-md-3 slide-right">
             <img src="{{bookItem.volumeInfo.imageLinks.thumbnail}}" class="shadow-sm" alt="">
         </div>
-        <div class="col d-flex flex-column justify-content-evenl">
+        <div class="col d-flex flex-column slide-right">
             <div>
                 <strong>{{bookItem.volumeInfo.title}}</strong>
                 <p><small>{{bookItem.volumeInfo.subtitle}}</small></p>
@@ -34,7 +34,7 @@
         </div>
     </div>
 </div>
-<div class="bottom-tab-wrapper">
+<div class="bottom-tab-wrapper slide-top">
     <a routerLink="/books/{{bookItem.id}}" routerLinkActive="text-primary" class="tab">book Info</a>
     <a routerLink="/notes/{{bookItem.id}}" routerLinkActive="text-primary" class="tab">My Notes</a>
 </div>
