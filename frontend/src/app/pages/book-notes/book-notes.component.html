@@ -11,18 +11,17 @@
 
     <div class="d-flex flex-wrap justify-content-around">
 
-        <div class="create-new">
+        <div class="create-new" (click)="displayModal(-1)">
             <i class="bi bi-plus">add note</i>
         </div>
 
-        <div *ngFor="let note of notes" class="note-card">
+        <div *ngFor="let note of noteList; let i = index" class="note-card" (click)="displayModal(i)">
             <div class="note-title text-left">
-                <h6>Title</h6> 
-                <p>12 Jun 2022</p>
+                <h6>{{note.title}}</h6> 
+                <p>{{note.createdAt.toDateString()}}</p>
             </div>
             <div class="note-inner text-start p-1 border">
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam, nemo.</p>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium repudiandae accusamus voluptate commodi vero eligendi nihil obcaecati iste nam! Asperiores, molestias. Quae numquam ut odit repudiandae facere veniam, exercitationem adipisci quo officia perspiciatis sit totam assumenda natus expedita sed incidunt nisi libero quidem iusto non placeat nesciunt corrupti. Laboriosam, consectetur!</p>
+                <p>{{note.content}}</p>
             </div>
         </div>
     </div>
@@ -32,3 +31,4 @@
     <a routerLink="/books/vHnZCwAAQBAJ" routerLinkActive="text-primary" class="tab">book Info</a>
     <a routerLink="/notes/" routerLinkActive="text-primary" class="tab">My Notes</a>
 </div>
+<app-book-note-modal [note]="selectedNote"></app-book-note-modal>
