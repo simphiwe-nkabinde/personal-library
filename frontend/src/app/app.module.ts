@@ -14,6 +14,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { SearchComponent } from './pages/search/search.component';
 import { LandingComponent } from './pages/landing/landing.component';
 import { BookNotesComponent } from './pages/book-notes/book-notes.component';
+import { BookNoteModalComponent } from './components/book-note-modal/book-note-modal.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { BookNotesComponent } from './pages/book-notes/book-notes.component';
     NavbarComponent,
     SearchComponent,
     LandingComponent,
-    BookNotesComponent
+    BookNotesComponent,
+    BookNoteModalComponent
   ],
   imports: [
     BrowserModule,
