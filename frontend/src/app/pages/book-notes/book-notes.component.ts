@@ -19,4 +19,8 @@ export class BookNotesComponent implements OnInit {
     this.slideAnimation.includeAll()
   }
 
+  displayModal() {
+    document.getElementById('')
+  }
+
 }
