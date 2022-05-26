@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from 'src/app/services/auth.service';
 import { SlideAnimationsModule } from 'src/app/slide-animations/slide-animations.module';
 declare let google: any;
 
@@ -9,7 +10,10 @@ declare let google: any;
 })
 export class LandingComponent implements OnInit {
 
-  constructor(public slideAnimation: SlideAnimationsModule) { }
+  constructor(
+    public slideAnimation: SlideAnimationsModule,
+    private authService: AuthService
+    ) { }
 
   ngOnInit(): void {
     this.slideAnimation.includeAll();
@@ -33,6 +37,14 @@ export class LandingComponent implements OnInit {
     // decodeJwtResponse() is a custom function defined by you
     // to decode the credential response.
     console.log(response);
+    this.authService.signin(response)
+      .subscribe(
+        (res:any) => {
+          console.log(res);
+        }, (err:any) => {
+          console.log(err);
+        } 
+      )
     // const responsePayload = decodeJwtResponse(response.credential);
 
     // console.log("ID: " + responsePayload.sub);
