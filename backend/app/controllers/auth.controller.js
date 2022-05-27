@@ -20,6 +20,6 @@ async function verify(token) {
 
 exports.signin = (req, res) => {
     console.log("req body: ", req.body);
-    const token = req.body
+    const token = req.body.credential
     verify(token)
 }
