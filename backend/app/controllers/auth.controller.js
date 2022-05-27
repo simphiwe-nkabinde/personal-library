@@ -1,4 +1,5 @@
 const {OAuth2Client} = require('google-auth-library');
+const jwt = require('jsonwebtoken');
 CLIENT_ID = "179512870057-p4q575l99rbb1q2atg5mm061gm72qvtk.apps.googleusercontent.com";
 const client = new OAuth2Client(CLIENT_ID);
 
@@ -12,14 +13,24 @@ async function verify(token) {
         //[CLIENT_ID_1, CLIENT_ID_2, CLIENT_ID_3]
     });
     const payload = ticket.getPayload();
-    console.log("payload: ", payload);
-    const userid = payload['sub'];
-    // If request specified a G Suite domain:
-    // const domain = payload['hd'];
+    return payload
 }
 
 exports.signin = (req, res) => {
-    console.log("req body: ", req.body);
-    const token = req.body.credential
-    verify(token)
+    const googleCredentialtoken = req.body.credential
+    const payload = verify(googleCredentialtoken)
+    .then(
+        data => {
+            const userBasic = {
+                sub: data.sub,
+                name: data.name,
+                email: data.email,
+                picture: data.picture
+            }
+            let userToken = jwt.sign(userBasic, 'myreadshelf')
+
+            res.status(200).json({userToken})            
+        }
+    );
+
 }
