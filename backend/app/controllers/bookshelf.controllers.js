@@ -1,5 +1,5 @@
 const { status } = require('express/lib/response');
-const Bookshelf = require('../models/bookshelf.model');
+const Book = require('../models/book.model');
 
 exports.create = (req, res) => {
     // Validate request
@@ -9,8 +9,8 @@ exports.create = (req, res) => {
         return;
     }
 
-    // create a bookshelf
-    const tutorial = new Bookshelf({
+    // create a Book
+    const tutorial = new Book({
         bookId: req.body.bookId,
         shelf: req.body.shelf,
         notes: req.body.notes || ''
@@ -28,14 +28,14 @@ exports.create = (req, res) => {
     
 }
 
-// retrieve and retrun all bookshelf from the database
+// retrieve and retrun all Book from the database
 exports.findAll = (req, res) => {
-    Bookshelf.find()
-        .then(bookshelf => {
-            res.send(bookshelf);
+    Book.find()
+        .then(Book => {
+            res.send(Book);
         }).catch(err => {
             res.status(500).send({
-                message: err.message || "some error occured while retrieving bookshelf"
+                message: err.message || "some error occured while retrieving Book"
             })
         })
 }
@@ -43,11 +43,11 @@ exports.findAll = (req, res) => {
 // find a single book with an id
 exports.findOne = (req, res) => {
     let id = req.params.id
-    Bookshelf.findOne({bookId : id})
+    Book.findOne({bookId : id})
         .then(book => {
             if(!book) {
                 res.status(404).send({
-                    messsage : "Bookshelf not found with id:" + req.params.id
+                    messsage : "Book not found with id:" + req.params.id
                 });
                 return;
             }
@@ -69,7 +69,7 @@ exports.update = (req, res) => {
         });
     }
 
-    Bookshelf.findOne({ bookId: req.params.id }, (err, book) => {
+    Book.findOne({ bookId: req.params.id }, (err, book) => {
         if(err) {
             return res.status(500).send({
                 message: "error updating book"
@@ -96,7 +96,7 @@ exports.update = (req, res) => {
 
 // delete a book with an id
 exports.delete = (req, res) => {
-    Bookshelf.findOneAndRemove({bookId: req.params.id})
+    Book.findOneAndRemove({bookId: req.params.id})
         .then(book => {
             if(!book) {
                 res.status(404).send({
@@ -113,11 +113,11 @@ exports.delete = (req, res) => {
 }
 
 exports.deleteAll = (req, res) => {
-    Bookshelf.deleteMany()
+    Book.deleteMany()
         .then(data => {
             if(!data.acknowledged) {
                 res.status(500).send({
-                    message: "could not delete entire bookshelf"
+                    message: "could not delete entire Book"
                 });
                 return;
             }
@@ -133,7 +133,7 @@ exports.deleteAll = (req, res) => {
 exports.findShelf = (req, res) => {
     let idList = [];
     let shelfName = req.params.shelf
-    Bookshelf.find({shelf: shelfName})
+    Book.find({shelf: shelfName})
         .then(bookList => {
             if(!bookList) {
                 res.status(404).send({
