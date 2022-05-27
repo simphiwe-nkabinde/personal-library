@@ -17,7 +17,9 @@ export class LandingComponent implements OnInit {
 
   ngOnInit(): void {
     this.slideAnimation.includeAll();
-    this.renderSigninButton()
+    if (!sessionStorage.getItem('USER_LOGGED')) {
+      this.renderSigninButton()
+    }
   }
 
   renderSigninButton() {
@@ -29,6 +31,6 @@ export class LandingComponent implements OnInit {
       document.getElementById("buttonDiv"),
       { theme: "outline", size: "large" }  // customization attributes
     );
-    google.accounts.id.prompt(); // also display the One Tap dialog
+    // google.accounts.id.prompt(); // also display the One Tap dialog
   }
 }
