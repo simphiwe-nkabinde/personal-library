@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/simphiwe-nkabinde/personal-library/issues"
   },
-  "homepage": "https://github.com/simphiwe-nkabinde/personal-library#readme"
+  "homepage": "https://github.com/simphiwe-nkabinde/personal-library#readme",
+  "dependencies": {
+    "sequelize": "^6.21.2"
+  }
 }
