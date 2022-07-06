@@ -9,14 +9,14 @@ module.exports = {
      * await queryInterface.createTable('users', { id: Sequelize.INTEGER });
      */
 
-    //Book belongs to user
+    //Note belongs to book
     return queryInterface.addColumn(
-      'Books', 
-      'UserId',
+      'Notes',
+      'BookId',
       {
-        type: Sequelize.INTEGER,
+        type: Sequelize.INTGER,
         references: {
-          model: 'Users',
+          model: 'Books',
           key: 'id'
         },
         onUpdate: 'CASCADE',
@@ -33,10 +33,10 @@ module.exports = {
      * await queryInterface.dropTable('users');
      */
 
-    //remove book belongs to user
+    //remove Notes belongs to book
     return queryInterface.removeColumn(
-      'Books', 
-      'UserId',
+      'Notes',
+      'BookId'
     );
   }
 };
