@@ -14,7 +14,8 @@ const Book = sequelize.define('Book', {
   }
 });
 
-Book.belongsTo(User)
-Book.hasMany(Note)
 
-module.exports = User;
+Book.hasMany(Note);
+Note.belongsTo(Book);
+
+module.exports = Book;

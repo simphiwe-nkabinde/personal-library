@@ -13,6 +13,4 @@ const Note = sequelize.define('Note', {
   }
 });
 
-Note.belongsTo(Book)
-
-module.exports = User;
+module.exports = Note;

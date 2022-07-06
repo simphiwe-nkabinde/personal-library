@@ -1,7 +1,9 @@
-// const User = require('../user.model')
+const User = require('./user.model')
 
 const create = (req, res) => {
-    res.status(200).json({message: 'create new user'})
+    const { name, email, password } = req.body;
+    const user = User.create(req.body);
+    res.status(200).json({user, message: 'create new user'});
 }
 
 const getAll = (req, res) => {
