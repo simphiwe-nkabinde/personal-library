@@ -1,8 +1,8 @@
 const { Sequelize, DataTypes } = require('sequelize');
 const sequelize = new Sequelize('sqlite::memory:');
+const Book = require('../book/book.model');
 
 const User = sequelize.define('User', {
-  // Model attributes are defined here
   name: {
     type: DataTypes.STRING,
     allowNull: false
@@ -16,5 +16,7 @@ const User = sequelize.define('User', {
     allowNull: false
   }
 });
+
+User.hasMany(Book)
 
 module.exports = User;
