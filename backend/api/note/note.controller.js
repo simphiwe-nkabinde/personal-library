@@ -1,4 +1,4 @@
-// const Note = require('../note.model')
+const { Note } = require('../../models/index');
 
 const create = (req, res) => {
     res.status(200).json({message: 'create new note'})

@@ -1,4 +1,4 @@
-// const book = require('../book.model')
+const { Book } = require('../../models/index');
 
 const create = (req, res) => {
     res.status(200).json({message: 'create new book'})
